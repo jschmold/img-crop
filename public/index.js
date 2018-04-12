@@ -198,6 +198,13 @@ class Cropper {
   
     this.redraw()
   }
+
+  /**
+   * Export the canvas as an octet stream
+   */
+  export() {
+    return this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
+  }
 }
 
 
@@ -241,8 +248,7 @@ function clearPreview() {
  * Save the contents of the canvas
  */
 function save() {
-  let url = cropper.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  document.getElementById('preview').src = url
+  document.getElementById('preview').src = cropper.export()
 }
 
 setContainerOrientation('equal')
