@@ -55,7 +55,7 @@
       <button onclick="cropper.modifyZoomBy(10)">zoom in</button>
       <button onclick="cropper.modifyZoomBy(-10)">zoom out</button>
       <button onclick="save()">Save</button>
-      <button onclick="resetOrientation()">Reset</button>
+      <button onclick="cropper.resetOrientation()">Reset</button>
       <script src="./index.js"></script>
       <select onchange="setContainerOrientation(this.value); cropper.resetOrientation()">
         <option value="equal" selected="selected">1:1 ratio</option>

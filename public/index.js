@@ -39,8 +39,6 @@ class Cropper {
       x: 0,
       y: 0,
     }
-    canvas.parentElement.style.width = canvas.width + 'px'
-    canvas.parentElement.style.height = canvas.height + 'px'
     
     canvas.onmousemove = this.mouseMove.bind(this)
     canvas.onmousedown = this.mouseDown.bind(this)
