@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+  }
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10pt;
+  }
+  .cropper-container,
+  .save-area {
+    background-color: rgb(40, 40, 200);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cropper-container .controls {
+    display: flex;
+    justify-content: center;
+  }
+  .cropper-image {
+    width: 250px;
+    height: 250px;
+    position: relative;
+  }
+  #cropCanvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #preview {
+    border: 4px dashed red;
+  }
+</style>
+<body>
+  <div class="cropper-container">
+    <h1>Crop Region</h1>
+    <div class="cropper-image">
+      <canvas id="cropCanvas"></canvas>
+    </div>
+    <div class="controls">
+      <button onclick="cropper.modifyZoomBy(10)">zoom in</button>
+      <button onclick="cropper.modifyZoomBy(-10)">zoom out</button>
+      <button onclick="save()">Save</button>
+      <button onclick="resetOrientation()">Reset</button>
+      <script src="./index.js"></script>
+      <select onchange="setContainerOrientation(this.value); cropper.resetOrientation()">
+        <option value="equal" selected="selected">1:1 ratio</option>
+        <option value="wide">2:1 ratio</option>
+        <option value="high">1:2 ratio</option>
+      </select>  
+    </div>
+  </div>
+  <div class="save-area">
+    <h1>Saved Version</h1>
+    <img id='preview' alt="" crossorigin="anonymous">
+    <button onclick="clearPreview()">Reset</button>
+  </div>
+</body>
+</html>
